@@ -1,70 +1,115 @@
-# Getting Started with Create React App
+# Proyek Akhir: Membangun Aplikasi Catatan Menggunakan React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Buatlah aplikasi web menggunakan React yang dapat menambahkan dan menghapus catatan. Agar lebih jelasnya, berikut 3 kriteria utama pada “Aplikasi Catatan Pribadi” yang harus Anda buat.
 
-## Available Scripts
+### Kriteria 1: Mampu Menampilkan Daftar Catatan
 
-In the project directory, you can run:
+- Aplikasi harus mampu menampilkan daftar catatan dengan data awal (initial data) yang telah kami sediakan.
+- Memanfaatkan state component untuk menyimpan data catatan.
+- Menggunakan teknik array map untuk menampilkan daftar catatan.
 
-### `npm start`
+Berikut contoh data riilnya:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```javascript
+  {
+  id: 3657848524,
+  title: 'Harry Potter and the Philosopher\'s Stone',
+  author: 'J.K Rowling',
+  year: 1997,
+  isComplete: false,
+}
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Kriteria 2: Mampu Menambahkan Catatan
 
-### `npm test`
+- Aplikasi harus mampu menambahkan data catatan baru.
+- Memanfaatkan controlled component dalam membuat form input.
+- Data catatan disimpan cukup pada memori saja (akan hilang jika browser di-refresh).
+- Data catatan yang disimpan merupakan objek JavaScript dengan struktur berikut
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```javascript
+{
+  id: number | string,
+  title: string,
+  body: string,
+  archived: boolean,
+  createdAt: string,
+}
+```
 
-### `npm run build`
+Berikut contoh data riilnya:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```javascript
+ {
+    id: 1,
+    title: "Babel",
+    body: "Babel merupakan tools open-source yang digunakan untuk mengubah sintaks ECMAScript 2015+ menjadi sintaks yang didukung oleh JavaScript engine versi lama. Babel sering dipakai ketika kita menggunakan sintaks terbaru termasuk sintaks JSX.",
+    archived: false,
+    createdAt: '2022-04-14T04:27:34.572Z'
+  }
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Catatan:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> Untuk id pada tiap catatan yang disimpan haruslah unik. Tips dalam menetapkan nilai untuk adalah Anda bisa memanfaatkan nilai timestamp. Untuk mendapatkan nilai timestamp di JavaScript cukup mudah, cukup dengan menuliskan expressions +new Date()
 
-### `npm run eject`
+### Kriteria 3: Mampu Menghapus Catatan
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Aplikasi harus menyediakan tombol hapus untuk menghapus data catatan yang disimpan.
+- Terdapat conditional rendering di mana bila tidak terdapat data catatan, maka UI menampilkan pesan “Tidak ada catatan” atau pesan apa pun yang mengindikasikan data catatan kosong.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Selain kriteria utama, terdapat kriteria opsional yang yang dapat Anda penuhi agar mendapat nilai yang lebih tinggi.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Kriteria Opsional 1: Terdapat Fitur Pencarian Catatan
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Aplikasi memiliki fitur pencarian catatan berdasarkan kata kunci yang dimasukkan, dengan ketentuan:
+  - Jika kolom pencarian tidak kosong, maka aplikasi hanya menampilkan daftar catatan yang judulnya mengandung kata kunci yang dimasukkan.
+  - Jika kolom pencariannya kosong, maka aplikasi menampilkan seluruh catatan.
+- Memanfaatkan controlled component dalam membangun fitur catatan.
 
-## Learn More
+### Kriteria Opsional 2: Terdapat Limit Karakter pada Input Judul Catatan
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Aplikasi dapat mencegah pengguna untuk memberikan judul catatan lebih dari 50 karakter.
+- Menggunakan state dalam melimitasi, bukan atribut maxlength.
+- Menampilkan jumlah karakter tersisa yang dapat digunakan oleh pengguna.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Kriteria Opsional 3: Terdapat Fitur Arsip Catatan
 
-### Code Splitting
+- Aplikasi memiliki fitur arsip catatan.
+- Aplikasi harus menyediakan tombol arsipkan/pindahkan untuk mengarsipkan atau memindahkan catatan dari arsip.
+- Daftar catatan yang diarsip harus ditampilkan pada tempat terpisah dari catatan yang tidak diarsip.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Penilaian Submission
 
-### Analyzing the Bundle Size
+Submission Anda akan dinilai oleh Reviewer dengan skala 1-5. Untuk mendapatkan nilai tinggi, Anda bisa menerapkan beberapa saran berikut:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Menerapkan kriteria opsional 1: Terdapat Fitur Pencarian Catatan.
+- Menerapkan kriteria opsional 2: Terdapat Limit Karakter pada Input Judul Catatan.
+- Menerapkan kriteria opsional 3: Terdapat Fitur Arsip Catatan.
+- Menuliskan kode dengan baik:
+  - Tidak membuat class component yang tidak diperlukan.
+  - Memecah UI menjadi komponen sekecil mungkin (sesuai tanggung jawabnya).
+  - Gaya penulisan harus kode konsisten.
 
-### Making a Progressive Web App
+Berikut adalah detail penilaian submission:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Bintang satu : Semua ketentuan terpenuhi, namun terdapat indikasi kecurangan dalam mengerjakan submission.
+2. Bintang dua : Semua ketentuan terpenuhi, namun terdapat kekurangan pada penulisan kode.
+3. Bintang tiga : Semua ketentuan terpenuhi, namun tidak terdapat improvisasi atau saran yang dipenuhi.
+4. Bintang empat : Semua ketentuan terpenuhi dan menerapkan minimal satu saran yang diberikan.
+5. Bintang lima : Semua ketentuan terpenuhi dan menerapkan seluruh saran yang diberikan.
 
-### Advanced Configuration
+Catatan:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+> Jika submission Anda ditolak maka tidak ada penilaian. Kriteria penilaian bintang di atas hanya berlaku jika submission Anda lulus.
 
-### Deployment
+### Hasil Penilaian
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Terpenuhi:
 
-### `npm run build` fails to minify
+- [x] Mampu Menampilkan Daftar Catatan
+- [x] Mampu Menambahkan Catatan
+- [x] Mampu Menghapus Catatan
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Rating Submission Anda**:
+⭐⭐⭐⭐⭐ (5/5)
